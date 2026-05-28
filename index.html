@@ -1,0 +1,1354 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bella Pasión – Tu Belleza, Nuestra Pasión</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --pink: #F00594;
+      --rose: #FF4DB9;
+      --black: #000000;
+      --pastel: #FFE4C7;
+      --white: #FFFFFF;
+      --soft-bg: #FFF0F8;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--white);
+      color: var(--black);
+      overflow-x: hidden;
+    }
+
+    /* ── DECORATIVE SVG ELEMENTS ── */
+    .bow-svg { display: inline-block; }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--pastel); }
+    ::-webkit-scrollbar-thumb { background: var(--pink); border-radius: 10px; }
+
+    /* ═══════════════════════════ HEADER ═══════════════════════════ */
+    header {
+      position: fixed;
+      top: 0; left: 0; width: 100%;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 2px solid #FFD6F0;
+      z-index: 1000;
+      padding: 0 2rem;
+    }
+
+    .header-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid #FFD6F0;
+      font-size: 0.78rem;
+    }
+
+    .social-links { display: flex; gap: 1rem; align-items: center; }
+    .social-links a {
+      color: var(--pink);
+      text-decoration: none;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      transition: color 0.2s;
+    }
+    .social-links a:hover { color: var(--rose); }
+
+    .search-bar {
+      display: flex;
+      align-items: center;
+      background: var(--soft-bg);
+      border: 1.5px solid #FFD6F0;
+      border-radius: 20px;
+      padding: 0.3rem 0.8rem;
+      gap: 0.4rem;
+    }
+    .search-bar input {
+      border: none; background: transparent; outline: none;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.78rem; color: #555; width: 160px;
+    }
+    .search-bar svg { color: var(--pink); }
+
+    .header-main {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.7rem 0;
+    }
+
+    .logo {
+      display: flex; align-items: center; gap: 0.6rem;
+      text-decoration: none;
+    }
+    .logo-icon {
+      width: 44px; height: 44px;
+      background: linear-gradient(135deg, var(--pink), var(--rose));
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+      box-shadow: 0 4px 14px rgba(240,5,148,0.35);
+    }
+    .logo-text {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 1.25rem;
+      background: linear-gradient(90deg, var(--pink), var(--rose));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.01em;
+    }
+    .logo-sub {
+      font-size: 0.6rem;
+      color: #999;
+      display: block;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      -webkit-text-fill-color: #999;
+    }
+
+    nav { display: flex; align-items: center; gap: 0.2rem; }
+    nav a {
+      text-decoration: none;
+      font-size: 0.83rem;
+      font-weight: 500;
+      color: #333;
+      padding: 0.45rem 0.9rem;
+      border-radius: 20px;
+      transition: all 0.25s;
+      position: relative;
+    }
+    nav a:hover, nav a.active {
+      background: linear-gradient(135deg, var(--pink), var(--rose));
+      color: var(--white);
+    }
+
+    .nav-dropdown { position: relative; }
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      background: white;
+      border-radius: 14px;
+      padding: 0.6rem;
+      box-shadow: 0 12px 40px rgba(240,5,148,0.15);
+      border: 1.5px solid #FFD6F0;
+      min-width: 200px;
+      z-index: 200;
+    }
+    .nav-dropdown:hover .dropdown-menu { display: block; }
+    .dropdown-menu a {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 0.8rem;
+      border-radius: 8px;
+      color: #333;
+      font-size: 0.8rem;
+    }
+    .dropdown-menu a .price {
+      font-weight: 700;
+      color: var(--pink);
+      font-size: 0.75rem;
+    }
+
+    .btn-quote {
+      background: linear-gradient(135deg, var(--pink), var(--rose));
+      color: white !important;
+      padding: 0.5rem 1.3rem !important;
+      border-radius: 25px !important;
+      font-weight: 600 !important;
+      font-size: 0.82rem !important;
+      box-shadow: 0 4px 18px rgba(240,5,148,0.4);
+      transition: all 0.3s !important;
+      white-space: nowrap;
+    }
+    .btn-quote:hover {
+      transform: translateY(-2px) !important;
+      box-shadow: 0 8px 28px rgba(240,5,148,0.5) !important;
+    }
+
+    /* HAMBURGER */
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .hamburger span { width: 24px; height: 2px; background: var(--pink); border-radius: 2px; transition: 0.3s; }
+
+    /* ═══════════════════════════ HERO ═══════════════════════════ */
+    #inicio {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #FFF0F8 0%, #FFE4C7 40%, #FFF0F8 100%);
+      display: flex;
+      align-items: center;
+      padding: 8rem 4rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg-decor {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .hero-circle {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.12;
+    }
+    .hero-circle-1 {
+      width: 600px; height: 600px;
+      background: var(--pink);
+      top: -150px; right: -100px;
+      animation: floatCircle 8s ease-in-out infinite;
+    }
+    .hero-circle-2 {
+      width: 300px; height: 300px;
+      background: var(--rose);
+      bottom: 50px; left: -80px;
+      animation: floatCircle 10s ease-in-out infinite reverse;
+    }
+    .hero-hearts {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+    }
+    .heart-float {
+      position: absolute;
+      font-size: 1.2rem;
+      opacity: 0.15;
+      animation: heartRise linear infinite;
+    }
+
+    @keyframes floatCircle {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-30px) scale(1.05); }
+    }
+    @keyframes heartRise {
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      10% { opacity: 0.2; }
+      90% { opacity: 0.1; }
+      100% { transform: translateY(-20px) rotate(20deg); opacity: 0; }
+    }
+
+    .hero-content {
+      position: relative; z-index: 2;
+      max-width: 600px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(240,5,148,0.1);
+      border: 1.5px solid rgba(240,5,148,0.3);
+      color: var(--pink);
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 0.35rem 1rem;
+      border-radius: 20px;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.04em;
+      animation: fadeInUp 0.6s ease both;
+    }
+
+    .hero-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 900;
+      line-height: 1.1;
+      color: var(--black);
+      margin-bottom: 1.2rem;
+      animation: fadeInUp 0.7s 0.1s ease both;
+    }
+    .hero-title span {
+      background: linear-gradient(90deg, var(--pink), var(--rose));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: 1rem;
+      color: #666;
+      line-height: 1.7;
+      margin-bottom: 2.2rem;
+      animation: fadeInUp 0.7s 0.2s ease both;
+    }
+
+    .hero-btns {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+      animation: fadeInUp 0.7s 0.3s ease both;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--pink), var(--rose));
+      color: white;
+      padding: 0.85rem 2rem;
+      border-radius: 30px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      border: none; cursor: pointer;
+      box-shadow: 0 8px 24px rgba(240,5,148,0.4);
+      transition: all 0.3s;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 36px rgba(240,5,148,0.5);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--pink);
+      padding: 0.85rem 2rem;
+      border-radius: 30px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      border: 2px solid var(--pink);
+      cursor: pointer;
+      transition: all 0.3s;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+    }
+    .btn-outline:hover {
+      background: var(--pink);
+      color: white;
+      transform: translateY(-3px);
+    }
+
+    .hero-stats {
+      display: flex; gap: 2.5rem; margin-top: 3rem;
+      animation: fadeInUp 0.7s 0.4s ease both;
+    }
+    .stat { text-align: left; }
+    .stat-num {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--pink);
+      line-height: 1;
+    }
+    .stat-label { font-size: 0.75rem; color: #888; margin-top: 0.2rem; }
+
+    .hero-visual {
+      position: absolute;
+      right: 6%;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 2;
+      animation: fadeInRight 0.9s 0.3s ease both;
+    }
+    .hero-card-main {
+      width: 320px;
+      background: white;
+      border-radius: 28px;
+      padding: 2rem;
+      box-shadow: 0 30px 80px rgba(240,5,148,0.2);
+      border: 2px solid #FFD6F0;
+      position: relative;
+    }
+    .hero-card-emoji { font-size: 4rem; text-align: center; display: block; margin-bottom: 1rem; }
+    .hero-card-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: var(--black);
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+    .hero-card-desc { font-size: 0.78rem; color: #888; text-align: center; line-height: 1.6; }
+    .heart-badge {
+      position: absolute;
+      top: -12px; right: -12px;
+      background: linear-gradient(135deg, var(--pink), var(--rose));
+      color: white;
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+      box-shadow: 0 4px 14px rgba(240,5,148,0.4);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    .floating-tag {
+      position: absolute;
+      background: white;
+      border-radius: 14px;
+      padding: 0.6rem 1rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      border: 1.5px solid #FFD6F0;
+      font-size: 0.75rem;
+      font-weight: 600;
+      display: flex; align-items: center; gap: 0.4rem;
+      white-space: nowrap;
+      animation: floatTag 4s ease-in-out infinite;
+    }
+    .tag-1 { top: 20px; left: -80px; animation-delay: 0s; }
+    .tag-2 { bottom: 20px; left: -90px; animation-delay: 1.5s; }
+    @keyframes floatTag {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInRight {
+      from { opacity: 0; transform: translateY(-50%) translateX(40px); }
+      to { opacity: 1; transform: translateY(-50%) translateX(0); }
+    }
+
+    /* ═══════════════════════════ SECTION COMMON ═══════════════════════════ */
+    section { padding: 5rem 4rem; }
+    .section-tag {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: rgba(240,5,148,0.08);
+      border: 1.5px solid rgba(240,5,148,0.2);
+      color: var(--pink);
+      font-size: 0.75rem; font-weight: 600;
+      padding: 0.3rem 0.9rem;
+      border-radius: 20px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .section-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 900;
+      color: var(--black);
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+    .section-title span {
+      background: linear-gradient(90deg, var(--pink), var(--rose));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .section-desc { font-size: 0.95rem; color: #666; line-height: 1.8; max-width: 560px; }
+
+    .divider {
+      width: 60px; height: 4px;
+      background: linear-gradient(90deg, var(--pink), var(--rose));
+      border-radius: 4px;
+      margin: 1rem 0 2rem;
+    }
+
+    /* ═══════════════════════════ PRODUCTOS ═══════════════════════════ */
+    #productos {
+      background: var(--soft-bg);
+      position: relative;
+      overflow: hidden;
+    }
+    #productos::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 350px; height: 350px;
+      background: radial-gradient(circle, rgba(240,5,148,0.06), transparent 70%);
+      border-radius: 50%;
+    }
+
+    .products-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .product-card {
+      background: white;
+      border-radius: 22px;
+      padding: 1.8rem;
+      border: 2px solid #FFD6F0;
+      transition: all 0.35s;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .product-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(240,5,148,0.04), rgba(255,77,185,0.04));
+      opacity: 0;
+      transition: opacity 0.35s;
+    }
+    .product-card:hover { transform: translateY(-8px); box-shadow: 0 24px 60px rgba(240,5,148,0.18); border-color: var(--pink); }
+    .product-card:hover::before { opacity: 1; }
+
+    .product-emoji { font-size: 2.8rem; margin-bottom: 1rem; display: block; }
+    .product-name {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      color: var(--black);
+      margin-bottom: 0.4rem;
+    }
+    .product-desc { font-size: 0.8rem; color: #888; line-height: 1.6; margin-bottom: 1.2rem; }
+    .product-price {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 900;
+      background: linear-gradient(90deg, var(--pink), var(--rose));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .product-badge {
+      position: absolute;
+      top: 1rem; right: 1rem;
+      background: linear-gradient(135deg, var(--pink), var(--rose));
+      color: white;
+      font-size: 0.65rem;
+      font-weight: 700;
+      padding: 0.25rem 0.7rem;
+      border-radius: 20px;
+      letter-spacing: 0.04em;
+    }
+    .product-btn {
+      display: flex; align-items: center; justify-content: center;
+      gap: 0.4rem;
+      background: linear-gradient(135deg, var(--pink), var(--rose));
+      color: white;
+      border: none; cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 0.8rem;
+      padding: 0.6rem 1.2rem;
+      border-radius: 20px;
+      margin-top: 1rem;
+      width: 100%;
+      transition: all 0.3s;
+    }
+    .product-btn:hover { transform: scale(1.03); box-shadow: 0 6px 18px rgba(240,5,148,0.35); }
+
+    /* ═══════════════════════════ QUIÉNES SOMOS ═══════════════════════════ */
+    #nosotros {
+      background: white;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-visual {
+      position: relative;
+    }
+    .about-main-card {
+      background: linear-gradient(135deg, var(--pink), var(--rose));
+      border-radius: 28px;
+      padding: 2.5rem;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    .about-main-card::before {
+      content: '💄';
+      position: absolute;
+      font-size: 6rem;
+      right: -10px; bottom: -10px;
+      opacity: 0.2;
+    }
+    .about-main-card .big-icon { font-size: 3rem; margin-bottom: 1rem; display: block; }
+    .about-main-card h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 800;
+      margin-bottom: 0.8rem;
+    }
+    .about-main-card p { font-size: 0.88rem; line-height: 1.8; opacity: 0.9; }
+
+    .about-floating-cards {
+      display: flex; flex-direction: column; gap: 1rem;
+      margin-top: 1.2rem;
+    }
+    .about-mini-card {
+      background: white;
+      border-radius: 16px;
+      padding: 1rem 1.4rem;
+      border: 1.5px solid #FFD6F0;
+      display: flex; align-items: flex-start; gap: 0.9rem;
+      box-shadow: 0 4px 16px rgba(240,5,148,0.08);
+      transition: transform 0.3s;
+    }
+    .about-mini-card:hover { transform: translateX(6px); }
+    .about-mini-icon { font-size: 1.6rem; flex-shrink: 0; margin-top: 2px; }
+    .about-mini-card h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--black);
+      margin-bottom: 0.3rem;
+    }
+    .about-mini-card p { font-size: 0.75rem; color: #777; line-height: 1.6; }
+
+    /* ═══════════════════════════ SERVICIOS ═══════════════════════════ */
+    #servicios {
+      background: var(--soft-bg);
+      text-align: center;
+    }
+    .services-intro { text-align: center; margin-bottom: 3rem; }
+    .services-intro .section-desc { margin: 0 auto; }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .service-card {
+      background: white;
+      border-radius: 22px;
+      padding: 2.2rem 1.6rem;
+      border: 2px solid #FFD6F0;
+      transition: all 0.35s;
+      text-align: center;
+      cursor: pointer;
+    }
+    .service-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--pink);
+      box-shadow: 0 20px 50px rgba(240,5,148,0.15);
+    }
+    .service-icon {
+      width: 70px; height: 70px;
+      background: linear-gradient(135deg, rgba(240,5,148,0.1), rgba(255,77,185,0.1));
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem;
+      margin: 0 auto 1.2rem;
+      transition: all 0.35s;
+    }
+    .service-card:hover .service-icon {
+      background: linear-gradient(135deg, var(--pink), var(--rose));
+    }
+    .service-name {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      color: var(--black);
+      margin-bottom: 0.5rem;
+    }
+    .service-desc { font-size: 0.8rem; color: #888; line-height: 1.6; }
+
+    /* ═══════════════════════════ TESTIMONIOS ═══════════════════════════ */
+    #testimonios {
+      background: white;
+      text-align: center;
+    }
+    .testimonios-intro { margin-bottom: 3rem; }
+    .testimonios-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+    .testimonio-card {
+      background: var(--soft-bg);
+      border-radius: 20px;
+      padding: 1.8rem;
+      border: 1.5px solid #FFD6F0;
+      text-align: left;
+      transition: transform 0.3s;
+    }
+    .testimonio-card:hover { transform: translateY(-5px); }
+    .stars { color: #FFB800; font-size: 0.9rem; margin-bottom: 0.8rem; letter-spacing: 2px; }
+    .testimonio-text { font-size: 0.85rem; color: #555; line-height: 1.7; font-style: italic; margin-bottom: 1.2rem; }
+    .testimonio-author { display: flex; align-items: center; gap: 0.8rem; }
+    .author-avatar {
+      width: 40px; height: 40px;
+      background: linear-gradient(135deg, var(--pink), var(--rose));
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      color: white;
+      flex-shrink: 0;
+    }
+    .author-name { font-weight: 600; font-size: 0.85rem; color: var(--black); }
+    .author-role { font-size: 0.72rem; color: #aaa; }
+
+    /* ═══════════════════════════ COTIZACIÓN ═══════════════════════════ */
+    #cotizacion {
+      background: linear-gradient(135deg, var(--pink) 0%, var(--rose) 100%);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    #cotizacion::before {
+      content: '💕';
+      position: absolute;
+      font-size: 15rem;
+      top: -40px; right: -40px;
+      opacity: 0.08;
+    }
+    #cotizacion::after {
+      content: '✨';
+      position: absolute;
+      font-size: 10rem;
+      bottom: -30px; left: -20px;
+      opacity: 0.1;
+    }
+    .cotizacion-inner { position: relative; z-index: 2; }
+    .cotizacion-inner .section-tag {
+      background: rgba(255,255,255,0.2);
+      border-color: rgba(255,255,255,0.4);
+      color: white;
+    }
+    .cotizacion-inner .section-title { color: white; }
+    .cotizacion-inner .section-title span { -webkit-text-fill-color: rgba(255,255,255,0.85); }
+    .cotizacion-inner .section-desc { color: rgba(255,255,255,0.85); margin: 0 auto 2.5rem; }
+    .cotizacion-inner .divider { background: rgba(255,255,255,0.4); margin: 1rem auto 2rem; }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-group.full { grid-column: 1 / -1; }
+    .form-group label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.9);
+      letter-spacing: 0.03em;
+    }
+    .form-group input, .form-group textarea, .form-group select {
+      background: rgba(255,255,255,0.15);
+      border: 1.5px solid rgba(255,255,255,0.3);
+      border-radius: 12px;
+      padding: 0.75rem 1rem;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.85rem;
+      color: white;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.5); }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+      border-color: rgba(255,255,255,0.8);
+      background: rgba(255,255,255,0.2);
+    }
+    .form-group select option { color: var(--black); background: white; }
+    .form-group textarea { resize: vertical; min-height: 90px; }
+    .form-submit {
+      background: white;
+      color: var(--pink);
+      border: none;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 1rem 2.5rem;
+      border-radius: 30px;
+      margin-top: 1.5rem;
+      transition: all 0.3s;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+      display: inline-flex; align-items: center; gap: 0.5rem;
+    }
+    .form-submit:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 36px rgba(0,0,0,0.25);
+    }
+
+    /* ═══════════════════════════ FOOTER ═══════════════════════════ */
+    footer {
+      background: var(--black);
+      color: white;
+      padding: 3.5rem 4rem 1.5rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 2.5rem;
+    }
+    .footer-brand .logo-text { font-size: 1.4rem; }
+    .footer-brand p { font-size: 0.82rem; color: #888; line-height: 1.7; margin: 1rem 0 1.5rem; }
+    .footer-socials { display: flex; gap: 0.7rem; }
+    .footer-social-btn {
+      width: 36px; height: 36px;
+      background: rgba(240,5,148,0.15);
+      border: 1px solid rgba(240,5,148,0.3);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    .footer-social-btn:hover {
+      background: var(--pink);
+      border-color: var(--pink);
+      transform: translateY(-2px);
+    }
+    .footer-col h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: white;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .footer-col ul li a {
+      text-decoration: none;
+      color: #888;
+      font-size: 0.82rem;
+      transition: color 0.2s;
+    }
+    .footer-col ul li a:hover { color: var(--pink); }
+    .footer-bottom {
+      border-top: 1px solid #222;
+      padding-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .footer-bottom p { font-size: 0.75rem; color: #555; }
+    .footer-bottom .hearts { color: var(--pink); }
+
+    /* ═══════════════════════════ TOAST ═══════════════════════════ */
+    .toast {
+      position: fixed;
+      bottom: 2rem; right: 2rem;
+      background: linear-gradient(135deg, var(--pink), var(--rose));
+      color: white;
+      padding: 1rem 1.5rem;
+      border-radius: 16px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      box-shadow: 0 12px 36px rgba(240,5,148,0.4);
+      z-index: 9999;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.4s;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .toast.show { transform: translateY(0); opacity: 1; }
+
+    /* ═══════════════════════════ RESPONSIVE ═══════════════════════════ */
+    @media (max-width: 900px) {
+      section { padding: 4rem 2rem; }
+      #inicio { padding: 7rem 2rem 4rem; flex-direction: column; }
+      .hero-visual { display: none; }
+      #nosotros { grid-template-columns: 1fr; gap: 2.5rem; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .form-grid { grid-template-columns: 1fr; }
+      .header-main { gap: 0.8rem; }
+    }
+
+    @media (max-width: 640px) {
+      nav { display: none; }
+      nav.open { display: flex; flex-direction: column; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: white; z-index: 999; align-items: center; justify-content: center; gap: 1rem; }
+      .hamburger { display: flex; }
+      .header-top { display: none; }
+      .hero-stats { flex-wrap: wrap; gap: 1.5rem; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ════════════════ HEADER ════════════════ -->
+  <header>
+    <div class="header-top">
+      <div class="social-links">
+        <a href="#">📸 Instagram</a>
+        <a href="#">👤 Facebook</a>
+        <a href="#">📱 WhatsApp</a>
+        <a href="#">🎵 TikTok</a>
+      </div>
+      <div class="search-bar">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="text" placeholder="Buscar productos…" />
+      </div>
+    </div>
+    <div class="header-main">
+      <a href="#inicio" class="logo">
+        <div class="logo-icon">🌸</div>
+        <div>
+          <span class="logo-text">Bella Pasión</span>
+          <span class="logo-sub">Cosméticos & Belleza</span>
+        </div>
+      </a>
+
+      <nav id="nav">
+        <a href="#inicio" class="active">Inicio</a>
+        <div class="nav-dropdown">
+          <a href="#productos">Productos ▾</a>
+          <div class="dropdown-menu">
+            <a href="#productos">💝 Kit Básico <span class="price">$50.000</span></a>
+            <a href="#productos">💎 Kit Premium <span class="price">$150.000</span></a>
+            <a href="#productos">✨ Skin Care <span class="price">$90.000</span></a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <a href="#servicios">Servicios ▾</a>
+          <div class="dropdown-menu">
+            <a href="#servicios">💄 Maquillaje</a>
+            <a href="#servicios">🌸 Belleza Integral</a>
+          </div>
+        </div>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#cotizacion" class="btn-quote">Solicitar Cotización</a>
+      </nav>
+
+      <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ════════════════ HERO ════════════════ -->
+  <section id="inicio">
+    <div class="hero-bg-decor">
+      <div class="hero-circle hero-circle-1"></div>
+      <div class="hero-circle hero-circle-2"></div>
+      <div class="hero-hearts" id="heartsContainer"></div>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-badge">🌸 Nueva Colección Disponible</div>
+      <h1 class="hero-title">
+        Descubre tu<br/><span>mejor versión,</span><br/>con productos de belleza
+      </h1>
+      <p class="hero-sub">
+        Más de 10.000 productos disponibles para el cuidado de la piel. Calidad premium, resultados reales y una experiencia que te hará brillar.
+      </p>
+      <div class="hero-btns">
+        <a href="#productos" class="btn-primary">🛍️ Ver Catálogo</a>
+        <a href="#cotizacion" class="btn-outline">💬 Solicitar Cotización</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-num">10K+</div>
+          <div class="stat-label">Productos disponibles</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">5K+</div>
+          <div class="stat-label">Clientas felices</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Calidad garantizada</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-card-main">
+        <div class="heart-badge">💕</div>
+        <div class="floating-tag tag-1">⭐ 4.9 Valoración</div>
+        <div class="floating-tag tag-2">✅ Envío gratis</div>
+        <span class="hero-card-emoji">🌸</span>
+        <div class="hero-card-title">Bella Pasión</div>
+        <p class="hero-card-desc">La belleza no es solo un producto, es una experiencia única diseñada para ti.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════ PRODUCTOS ════════════════ -->
+  <section id="productos">
+    <div class="products-header">
+      <div>
+        <div class="section-tag">🛍️ Catálogo</div>
+        <h2 class="section-title">Nuestros <span>Productos</span> Estrella</h2>
+        <div class="divider"></div>
+        <p class="section-desc">Seleccionados cuidadosamente para satisfacer las necesidades de cada cliente, desde cuidado facial hasta fragancias exclusivas.</p>
+      </div>
+      <a href="#cotizacion" class="btn-primary" style="white-space:nowrap">Ver todos →</a>
+    </div>
+
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-badge">⭐ Popular</div>
+        <span class="product-emoji">💝</span>
+        <div class="product-name">Kit Básico de Belleza</div>
+        <p class="product-desc">Incluye crema hidratante, sérum vitamina C, tónico y limpiador facial. Ideal para iniciar tu rutina.</p>
+        <div class="product-price">$50.000</div>
+        <button class="product-btn" onclick="showToast('💝 Kit Básico agregado a tu cotización')">💬 Cotizar ahora</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product-badge">💎 Premium</div>
+        <span class="product-emoji">💎</span>
+        <div class="product-name">Kit Premium Completo</div>
+        <p class="product-desc">Rutina completa de 8 pasos con productos de alta gama. Para el cuidado más exigente de tu piel.</p>
+        <div class="product-price">$150.000</div>
+        <button class="product-btn" onclick="showToast('💎 Kit Premium agregado a tu cotización')">💬 Cotizar ahora</button>
+      </div>
+
+      <div class="product-card">
+        <span class="product-emoji">✨</span>
+        <div class="product-name">Skin Care Avanzado</div>
+        <p class="product-desc">Tratamiento especializado para renovación celular, manchas y anti-envejecimiento con ingredientes activos.</p>
+        <div class="product-price">$90.000</div>
+        <button class="product-btn" onclick="showToast('✨ Skin Care agregado a tu cotización')">💬 Cotizar ahora</button>
+      </div>
+
+      <div class="product-card">
+        <span class="product-emoji">💄</span>
+        <div class="product-name">Set de Maquillaje</div>
+        <p class="product-desc">Colores vibrantes y de larga duración. Base, contorno, iluminador y paleta de sombras incluidos.</p>
+        <div class="product-price">$75.000</div>
+        <button class="product-btn" onclick="showToast('💄 Set de Maquillaje agregado a tu cotización')">💬 Cotizar ahora</button>
+      </div>
+
+      <div class="product-card">
+        <span class="product-emoji">🌺</span>
+        <div class="product-name">Fragancias Florales</div>
+        <p class="product-desc">Perfumes de larga duración con notas florales y frutales. Presentaciones de 50ml y 100ml disponibles.</p>
+        <div class="product-price">$65.000</div>
+        <button class="product-btn" onclick="showToast('🌺 Fragancia agregada a tu cotización')">💬 Cotizar ahora</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product-badge">🔥 Nuevo</div>
+        <span class="product-emoji">💆‍♀️</span>
+        <div class="product-name">Cuidado Corporal Spa</div>
+        <p class="product-desc">Exfoliante, crema corporal y aceite corporal de lujo. Transforma tu rutina en una experiencia de spa.</p>
+        <div class="product-price">$85.000</div>
+        <button class="product-btn" onclick="showToast('💆‍♀️ Kit Corporal agregado a tu cotización')">💬 Cotizar ahora</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════ QUIÉNES SOMOS ════════════════ -->
+  <section id="nosotros">
+    <div class="about-visual">
+      <div class="about-main-card">
+        <span class="big-icon">🌸</span>
+        <h3>Nuestra Historia</h3>
+        <p>Nuestra empresa nació con el propósito de ofrecer productos de alta calidad que ayuden a las personas a sentirse más seguras, felices y cómodas consigo mismas. Empezamos como un pequeño emprendimiento con mucha pasión y dedicación, buscando brindar una excelente atención y productos innovadores. Con esfuerzo y compromiso, hemos ido creciendo y ganando la confianza de nuestros clientes.</p>
+      </div>
+      <div class="about-floating-cards">
+        <div class="about-mini-card">
+          <span class="about-mini-icon">🎯</span>
+          <div>
+            <h4>Nuestra Misión</h4>
+            <p>Brindar productos y servicios de excelente calidad que satisfagan las necesidades de nuestros clientes, ofreciendo confianza, innovación y una experiencia única, siempre con compromiso y responsabilidad.</p>
+          </div>
+        </div>
+        <div class="about-mini-card">
+          <span class="about-mini-icon">🌟</span>
+          <div>
+            <h4>Nuestra Visión</h4>
+            <p>Ser una empresa reconocida a nivel local y nacional por nuestra calidad, innovación y buen servicio, convirtiéndonos en una marca líder y de confianza para nuestros clientes.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="section-tag">💖 Quiénes Somos</div>
+      <h2 class="section-title">La belleza es<br/><span>nuestra pasión</span></h2>
+      <div class="divider"></div>
+      <p class="section-desc">
+        En Bella Pasión nos dedicamos al mundo de los cosméticos y la belleza, ofreciendo productos de alta calidad pensados para realzar tu belleza natural y cuidar tu piel con amor y dedicación.
+      </p>
+      <br/>
+      <p class="section-desc">
+        Contamos con una amplia gama de productos cosméticos — desde cuidado facial y corporal hasta maquillaje y fragancias — seleccionados cuidadosamente para satisfacer las necesidades de cada cliente.
+      </p>
+      <br/>
+      <p class="section-desc" style="font-style:italic; color: var(--pink); font-weight:600;">
+        "En Bella Pasión, la belleza no es solo un producto, es una experiencia." 🌸
+      </p>
+      <br/><br/>
+      <a href="#cotizacion" class="btn-primary">💬 Contáctanos hoy</a>
+    </div>
+  </section>
+
+  <!-- ════════════════ SERVICIOS ════════════════ -->
+  <section id="servicios">
+    <div class="services-intro">
+      <div class="section-tag">💅 Servicios</div>
+      <h2 class="section-title">Todo lo que <span>necesitas</span></h2>
+      <div class="divider" style="margin:1rem auto 1.5rem;"></div>
+      <p class="section-desc">Ofrecemos una experiencia completa de belleza para que te sientas segura, radiante y especial en todo momento.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">💄</div>
+        <div class="service-name">Maquillaje Profesional</div>
+        <p class="service-desc">Productos y técnicas de maquillaje profesional para todo tipo de ocasión — desde el día a día hasta eventos especiales.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🌸</div>
+        <div class="service-name">Belleza Integral</div>
+        <p class="service-desc">Rutinas completas de cuidado facial, corporal y capilar diseñadas especialmente para tu tipo de piel.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">✨</div>
+        <div class="service-name">Cuidado Facial</div>
+        <p class="service-desc">Tratamientos y productos especializados para mantener tu piel radiante, hidratada y joven con ingredientes activos.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">💆‍♀️</div>
+        <div class="service-name">Tratamientos Capilares</div>
+        <p class="service-desc">Línea completa de cuidado capilar para nutrir, fortalecer y embellecer tu cabello desde adentro hacia afuera.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════ TESTIMONIOS ════════════════ -->
+  <section id="testimonios">
+    <div class="testimonios-intro">
+      <div class="section-tag">💬 Testimonios</div>
+      <h2 class="section-title">Lo que dicen nuestras <span>clientas</span></h2>
+      <div class="divider" style="margin:1rem auto 1.5rem;"></div>
+    </div>
+    <div class="testimonios-grid">
+      <div class="testimonio-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonio-text">"Los productos son increíbles, mi piel nunca había lucido tan bien. El Kit Premium valió cada peso, lo recomiendo al 100%."</p>
+        <div class="testimonio-author">
+          <div class="author-avatar">💁‍♀️</div>
+          <div>
+            <div class="author-name">Valentina R.</div>
+            <div class="author-role">Clienta frecuente</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonio-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonio-text">"Excelente atención y los productos llegaron perfectos. El Skin Care avanzado transformó mi rutina completamente. ¡Las amo!"</p>
+        <div class="testimonio-author">
+          <div class="author-avatar">🌸</div>
+          <div>
+            <div class="author-name">Mariana S.</div>
+            <div class="author-role">Clienta satisfecha</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonio-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonio-text">"Me encanta la variedad de productos. El set de maquillaje tiene colores hermosos y dura todo el día. Sin duda volveré a pedir."</p>
+        <div class="testimonio-author">
+          <div class="author-avatar">💄</div>
+          <div>
+            <div class="author-name">Daniela M.</div>
+            <div class="author-role">Maquilladora</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════ COTIZACIÓN ════════════════ -->
+  <section id="cotizacion">
+    <div class="cotizacion-inner">
+      <div class="section-tag">📩 Contacto</div>
+      <h2 class="section-title">Solicita tu <span>Cotización</span></h2>
+      <div class="divider"></div>
+      <p class="section-desc">Cuéntanos qué necesitas y te responderemos con una propuesta personalizada. ¡Nos encanta ayudarte a brillar!</p>
+
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Nombre completo</label>
+          <input type="text" id="fname" placeholder="Tu nombre" />
+        </div>
+        <div class="form-group">
+          <label>Teléfono / WhatsApp</label>
+          <input type="tel" id="fphone" placeholder="+57 300 000 0000" />
+        </div>
+        <div class="form-group">
+          <label>Correo electrónico</label>
+          <input type="email" id="femail" placeholder="tu@correo.com" />
+        </div>
+        <div class="form-group">
+          <label>Producto de interés</label>
+          <select id="fproduct">
+            <option value="">Selecciona un producto</option>
+            <option>Kit Básico - $50.000</option>
+            <option>Kit Premium - $150.000</option>
+            <option>Skin Care - $90.000</option>
+            <option>Set de Maquillaje - $75.000</option>
+            <option>Fragancias - $65.000</option>
+            <option>Cuidado Corporal - $85.000</option>
+            <option>Otro / Varios productos</option>
+          </select>
+        </div>
+        <div class="form-group full">
+          <label>Mensaje (opcional)</label>
+          <textarea id="fmessage" placeholder="Cuéntanos más sobre lo que buscas…"></textarea>
+        </div>
+      </div>
+      <button class="form-submit" onclick="submitForm()">
+        🌸 Enviar Cotización
+      </button>
+    </div>
+  </section>
+
+  <!-- ════════════════ FOOTER ════════════════ -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">
+          <div class="logo-icon" style="width:38px;height:38px;font-size:1.2rem;">🌸</div>
+          <span class="logo-text">Bella Pasión</span>
+        </div>
+        <p>En Bella Pasión nos especializamos en productos de belleza de alta calidad para el cuidado facial, capilar y corporal. Tu belleza, nuestra pasión.</p>
+        <div class="footer-socials">
+          <a href="#" class="footer-social-btn">📸</a>
+          <a href="#" class="footer-social-btn">👤</a>
+          <a href="#" class="footer-social-btn">📱</a>
+          <a href="#" class="footer-social-btn">🎵</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#productos">Productos</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#nosotros">Quiénes Somos</a></li>
+          <li><a href="#cotizacion">Cotización</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Productos</h4>
+        <ul>
+          <li><a href="#productos">Kit Básico — $50.000</a></li>
+          <li><a href="#productos">Kit Premium — $150.000</a></li>
+          <li><a href="#productos">Skin Care — $90.000</a></li>
+          <li><a href="#productos">Maquillaje — $75.000</a></li>
+          <li><a href="#productos">Fragancias — $65.000</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Bella Pasión. Todos los derechos reservados.</p>
+      <p>Hecho con <span class="hearts">💕</span> para resaltar tu belleza natural</p>
+    </div>
+  </footer>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast">✅ <span id="toastMsg"></span></div>
+
+  <script>
+    // ── FLOATING HEARTS ──
+    const container = document.getElementById('heartsContainer');
+    const emojis = ['💕', '🌸', '✨', '💗', '🌺', '💖'];
+    for (let i = 0; i < 18; i++) {
+      const h = document.createElement('div');
+      h.className = 'heart-float';
+      h.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      h.style.left = Math.random() * 100 + '%';
+      h.style.animationDuration = (10 + Math.random() * 15) + 's';
+      h.style.animationDelay = (Math.random() * 12) + 's';
+      h.style.fontSize = (0.8 + Math.random() * 1.4) + 'rem';
+      container.appendChild(h);
+    }
+
+    // ── HAMBURGER ──
+    function toggleMenu() {
+      const nav = document.getElementById('nav');
+      nav.classList.toggle('open');
+    }
+
+    // ── ACTIVE NAV ──
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('nav a[href^="#"]');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(s => {
+        if (window.scrollY >= s.offsetTop - 200) current = s.id;
+      });
+      navLinks.forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+      });
+    });
+
+    // ── TOAST ──
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      document.getElementById('toastMsg').textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 3000);
+    }
+
+    // ── FORM ──
+    function submitForm() {
+      const name = document.getElementById('fname').value.trim();
+      const email = document.getElementById('femail').value.trim();
+      if (!name || !email) {
+        showToast('⚠️ Por favor completa tu nombre y correo');
+        return;
+      }
+      // Save to localStorage simulation
+      const quote = {
+        name, email,
+        phone: document.getElementById('fphone').value,
+        product: document.getElementById('fproduct').value,
+        message: document.getElementById('fmessage').value,
+        date: new Date().toISOString()
+      };
+      const all = JSON.parse(localStorage.getItem('bellapasion_quotes') || '[]');
+      all.push(quote);
+      localStorage.setItem('bellapasion_quotes', JSON.stringify(all));
+
+      document.getElementById('fname').value = '';
+      document.getElementById('femail').value = '';
+      document.getElementById('fphone').value = '';
+      document.getElementById('fproduct').value = '';
+      document.getElementById('fmessage').value = '';
+
+      showToast('🌸 ¡Cotización enviada! Te contactaremos pronto.');
+    }
+
+    // ── SCROLL ANIMATIONS ──
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.product-card, .service-card, .testimonio-card, .about-mini-card').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
